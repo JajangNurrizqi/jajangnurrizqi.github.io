@@ -1,0 +1,40 @@
+:root {
+  font-size: 18px;
+  --text-color: #000;
+  --background-color: #c1c3c7;
+  --background-transparent: rgba(225, 223, 230, 0.445);
+  --border-color: #222324;
+}
+
+body {
+  background-color: var(--background-color);
+  margin: 0;
+  padding: 0;
+}
+
+body::-webkit-scrollbar {
+  width: 0.25rem;
+}
+
+.content {
+  background-image: url(img.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  aspect-ratio: 16/9;
+  width: 100%;
+  height: 100%;
+}
+
+.content .main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--background-transparent);
+  width: 20rem;
+  height: 6.5rem;
+  border-radius: 2rem 0.5rem 2rem 0.5rem;
+  box-shadow: 2px 2px rgba(223, 217, 242, 0.58);
+}
