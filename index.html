@@ -1,20 +1,139 @@
-<html lang="en">
+<!DOCTYPE html>
+<html lang="id">
 
 <head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Profile | Jajang Nurrizqi</title>
-	<link rel="stylesheet" href="style.css" />
-	<script src="https://kit.fontawesome.com/24c6695de3.js" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage | Jajang Nurrizqi</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/24c6695de3.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-	<div class="content">
-		<main class="main">
-			Selamat Datang Di Profile Jajang Nurrizqi
-		</main>
-	</div>
+
+    <input type="checkbox" id="nav-toggle" class="sidebar-toggle-input">
+
+    <!-- Tombol Toggle Utama -->
+    <label for="nav-toggle" class="toggle-btn" title="Open Menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+    </label>
+
+    <!-- Sidebar Melayang -->
+    <aside class="sidebar">
+        <div class="sidebar-top">
+            <div class="sidebar-info">
+                <img src="foto.png" alt="Jajang Nurrizqi" class="profile-photo piksel-50">
+                <h3>Jajang Nurrizqi</h3>
+                <p>Web Developer</p>
+            </div>
+            <label for="nav-toggle" class="close-sidebar-btn" title="Close Menu">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </label>
+        </div>
+        <div class="sidebar-bottom">
+            <ul>
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#about">About & Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </aside>
+
+    <!-- Bagian Utama / Hero Full Screen dengan Foto dan Grid Layout -->
+    <section id="hero" class="section-card hero-section">
+        <div class="card-box">
+            <div class="hero-grid">
+                <img src="foto.png" alt="Jajang Nurrizqi" class="profile-photo">
+                <div>
+                    <h1>Jajang Nurrizqi</h1>
+                    <h2>Backend Programmer & Information Technology Student</h2>
+                    <p>A graduate of SMKN Situraja majoring in Software Engineering currently pursuing a Bachelor's
+                        degree in Information Technology at Universitas Bina Sarana Informatika (8th Semester, currently
+                        completing the skripsi). Experienced in web development and backend system integration.</p>
+                </div>
+            </div>
+            <div class="scroll-hint">↓ Scroll down to view projects and other information</div>
+        </div>
+    </section>
+
+    <!-- Bagian Proyek -->
+    <section id="projects" class="section-card content-section">
+        <div class="card-box">
+            <h2>Projects</h2>
+            <div class="project-block">
+                <p>• <strong>Karang Taruna RW 05 Homepage redesign CSS:</strong> Redesigned the homepage using CSS to
+                    improve the user interface and experience.</p>
+                <p>Link to the project and pages:</p>
+                <p><a href="https://jajangnurrizqi.github.io/karang-taruna/" target="_blank">Karang Taruna 05 Page</a>
+                </p>
+                <p>• <strong>Warung Sehat:</strong> Making css layout for Workshop project for web shopping.</p>
+                <p>Link to the project and pages: (Pls be careful that the page may not be linked to one another<br />
+                    because it originally for php project with Laravel)</p>
+                <p><a href="https://jajangnurrizqi.github.io/warung-sehat/" target="_blank">Homepage</a></p>
+                <p><a href="https://jajangnurrizqi.github.io/warung-sehat/category.html" target="_blank">Category
+                        Page</a></p>
+                <p><a href="https://jajangnurrizqi.github.io/warung-sehat/detail.html" target="_blank">Detail Page</a>
+                </p>
+            </div>
+            <!-- <div class="project-block" style="margin-top: 10px;">
+                <p><strong>Other Projects:</strong> Computerized student council (OSIS) chairperson election using
+                    CodeIgniter at SMKN Situraja and the "Toko Sayur" web bootcamp project.</p>
+            </div> -->
+        </div>
+    </section>
+
+    <!-- Bagian Tentang Saya -->
+    <section id="about" class="section-card content-section">
+        <div class="card-box">
+            <h2>About Me & Technical Skills</h2>
+            <p><strong>Education:</strong> Bachelor's in Information Technology at Universitas Bina Sarana Informatika
+                (2022 - Present) & Software Engineering at SMKN Situraja (2015 - 2018).</p>
+            <p><strong>Skills & Programming Languages:</strong></p>
+            <div class="tags-container">
+                <span class="tag">HTML / CSS</span>
+                <span class="tag">JavaScript</span>
+                <span class="tag">PHP</span>
+                <span class="tag">CodeIgniter (MVC/CRUD)</span>
+                <span class="tag">Vue.js</span>
+                <span class="tag">Node.js</span>
+                <span class="tag">Git Command</span>
+                <span class="tag">Python</span>
+                <span class="tag">FastAPI</span>
+                <span class="tag">MySQL</span>
+            </div>
+            <p><strong>Activities & Languages:</strong>
+                Proficient in Web development, good listening
+                comprehension in English,
+                and planning to master QA Automation.</p>
+        </div>
+    </section>
+
+    <!-- Bagian Kontak -->
+    <section id="contact" class="section-card content-section">
+        <div class="card-box">
+            <h2>Contact & Information</h2>
+            <p>Let's connect for collaborations or career opportunities:</p>
+            <div class="tags-container">
+                <span class="tag">📍 Jatinegara, East Jakarta</span>
+                <span class="tag">✉️ <a class="link-nostyle"
+                        href="mailto:jajangnurrizki@gmail.com">jajangnurrizki@gmail.com</a></span>
+                <span class="tag">📞 <a class="link-nostyle" href="tel:+6285155040173">+62 851 5504 0173</a></span>
+                <span class="tag">🔗 <a class="link-nostyle" href="https://www.linkedin.com/in/jajang-nurrizqi/"
+                        target="_blank">LinkedIn Jajang Nurrizqi</a></span>
+            </div>
+            <p style="margin-top: 15px; font-style: italic; color: #64748b;">"Currently sharpening my programming skills
+                further to expand software development & QA expertise."</p>
+        </div>
+    </section>
+
 </body>
 
 </html>
