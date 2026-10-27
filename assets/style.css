@@ -35,7 +35,11 @@ html::-webkit-scrollbar {
 body {
     height: 100vh;
 }
-
+/* Hidden inputs for pure CSS state management */
+.sidebar-toggle-input,
+.carousel-radio {
+    display: none;
+}
 /* Sembunyikan checkbox utama pengendali state */
 .sidebar-toggle-input {
     display: none;
@@ -224,7 +228,7 @@ body {
     border-top-style: dashed;
 
     padding: 36px 32px 50px 32px; /* Bottom padding dilebihkan agar tidak tertutup scroll-hint */
-    box-shadow: 0 -15px 35px rgba(0, 0, 0, 0.25);
+    /* box-shadow: 0 -15px 35px rgba(0, 0, 0, 0.25); */
     
     display: flex;
     flex-direction: column;
@@ -321,6 +325,310 @@ body {
     line-height: 1.6;
     margin-bottom: 12px;
 }
+/* ========================================================= */
+/* FULL-CARD CAROUSEL WITH DEDICATED DESCRIPTION BAR BELOW   */
+/* ========================================================= */
+.carousel-container {
+    --total-slides: 2; /* Ubah nilai ini jika jumlah slide bertambah (misal: 3, 4, dst.) */
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    flex: 1;
+    min-height: 0;
+}
+
+/* Main Image Stage Window */
+.carousel-viewport {
+    position: relative;
+    width: 100%;
+    flex: 1;
+    min-height: 220px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 6px 18px rgba(15, 23, 42, 0.12);
+    background-color: #0f172a;
+    border: 1px solid #cbd5e1;
+}
+
+/* Carousel Slides Wrapper */
+.carousel-slides {
+    display: flex;
+    width: 600%;
+    height: 100%;
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Individual Slide */
+.carousel-slide {
+    width: 16.6666%;
+    height: 100%;
+    position: relative;
+    flex-shrink: 0;
+}
+
+
+
+.carousel-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.imgCarousel{
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: top;
+    background-repeat: no-repeat;
+    display: block;
+}
+
+
+/* Next / Prev Arrow Navigation Controls */
+.nav-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 38px;
+    height: 38px;
+    background: rgba(255, 255, 255, 0.9);
+    color: #0f172a;
+    border-radius: 50%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: background 0.2s, transform 0.2s;
+    user-select: none;
+}
+
+.nav-arrow:hover {
+    background: #ffffff;
+    transform: translateY(-50%) scale(1.08);
+}
+
+.nav-arrow svg {
+    width: 20px;
+    height: 20px;
+    stroke: #0f172a;
+}
+
+.nav-arrow.prev { left: 12px; }
+.nav-arrow.next { right: 12px; }
+
+/* Full-Width Description Bar Directly Below the Large Image */
+.description-window {
+    position: relative;
+    width: 100%;
+    min-height: 85px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.02);
+    flex-shrink: 0;
+}
+
+.description-slides {
+    display: flex;
+    width: 600%;
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.description-slide {
+    width: 16.6666%;
+    padding: 20px;
+    flex-shrink: 0;
+    box-sizing: border-box;
+}
+
+.description-slide a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.slide-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 4px;
+}
+
+.slide-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #0f172a;
+}
+
+.slide-badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 10px;
+    background-color: #e0f2fe;
+    border: 1px solid #bae6fd;
+    color: #0284c7;
+    border-radius: 12px;
+    white-space: nowrap;
+}
+
+.slide-desc {
+    font-size: 13.5px;
+    line-height: 1.45;
+    color: #475569;
+}
+
+/* Bottom Preview Thumbnails Container */
+.thumbnail-strip {
+    display: flex;
+    justify-content: center; /* Posisikan thumbnail di tengah */
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    flex-shrink: 0;
+}
+
+.thumb-label {
+    position: relative;
+    width: 70px;
+    height: 48px;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    border: 2px solid transparent;
+    opacity: 0.55;
+    transition: opacity 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+    background-color: #0f172a;
+    flex-shrink: 0;
+}
+
+.thumb-label img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.thumb-label:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+}
+
+/* --- 2. Perbarui Kontrol Manual & Animasi Otomatis (Autoslide) --- */
+#p1:checked ~ .carousel-container .carousel-slides,
+#p1:checked ~ .carousel-container .description-slides { 
+    animation: none;
+    transform: translateX(0%); 
+}
+
+#p2:checked ~ .carousel-container .carousel-slides,
+#p2:checked ~ .carousel-container .description-slides { 
+    animation: none;
+    transform: translateX(calc(-100% / var(--total-slides))); 
+}
+
+#p3:checked ~ .carousel-container .carousel-slides,
+#p3:checked ~ .carousel-container .description-slides { 
+    animation: none;
+    transform: translateX(calc(-200% / var(--total-slides))); 
+}
+
+#p4:checked ~ .carousel-container .carousel-slides,
+#p4:checked ~ .carousel-container .description-slides { 
+    animation: none;
+    transform: translateX(calc(-300% / var(--total-slides))); 
+}
+
+@keyframes autoCarouselDynamic {
+    0%, 45% {
+        transform: translateX(0%);
+    }
+    50%, 95% {
+        transform: translateX(calc(-100% / var(--total-slides)));
+    }
+    100% {
+        transform: translateX(0%);
+    }
+}
+
+@keyframes autoThumb1 {
+    0%, 45% {
+        border-color: #0284c7;
+        opacity: 1;
+        box-shadow: 0 0 0 2px rgba(2, 132, 199, 0.3);
+    }
+    50%, 100% {
+        border-color: transparent;
+        opacity: 0.55;
+        box-shadow: none;
+    }
+}
+
+@keyframes autoThumb2 {
+    0%, 45% {
+        border-color: transparent;
+        opacity: 0.55;
+        box-shadow: none;
+    }
+    50%, 95% {
+        border-color: #0284c7;
+        opacity: 1;
+        box-shadow: 0 0 0 2px rgba(2, 132, 199, 0.3);
+    }
+    100% {
+        border-color: transparent;
+        opacity: 0.55;
+        box-shadow: none;
+    }
+}
+/* Terapkan animasi autoslide ke wrapper slides secara default */
+.carousel-slides,
+.description-slides {
+    animation: autoCarousel2 8s infinite ease-in-out;
+}
+
+.thumb-1 {
+    animation: autoThumb1 8s infinite;
+}
+
+.thumb-2 {
+    animation: autoThumb2 8s infinite;
+}
+
+/* 3. Override Manual saat pengguna mengklik radio button / thumbnail */
+#p1:checked ~ .carousel-container .carousel-slides,
+#p1:checked ~ .carousel-container .description-slides {
+    animation: none;
+    transform: translateX(0%);
+}
+
+#p2:checked ~ .carousel-container .carousel-slides,
+#p2:checked ~ .carousel-container .description-slides {
+    animation: none;
+    transform: translateX(-16.6666%);
+}
+
+/* Highlight thumbnail manual */
+#p1:checked ~ .carousel-container .thumb-1,
+#p2:checked ~ .carousel-container .thumb-2 {
+    animation: none;
+    border-color: #0284c7;
+    opacity: 1;
+    box-shadow: 0 0 0 2px rgba(2, 132, 199, 0.3);
+}
+
+#p1:checked ~ .carousel-container .thumb-2,
+#p2:checked ~ .carousel-container .thumb-1 {
+    animation: none;
+    border-color: transparent;
+    opacity: 0.55;
+    box-shadow: none;
+}
 
 /* Badges Responsif */
 .tags-container {
@@ -403,6 +711,84 @@ body {
     .scroll-hint {
         font-size: 11.5px;
         bottom: 10px;
+    }
+    #projects .card-box {
+        padding: 20px 14px 40px 14px;
+        justify-content: flex-start;
+    }
+
+    .carousel-viewport {
+        min-height: 160px;
+        max-height: 210px;
+    }
+
+    .imgCarousel {
+        background-size: cover;
+        background-position: center;
+    }
+
+    .description-window {
+        min-height: 80px;
+    }
+
+    .slide-title {
+        font-size: 14px;
+    }
+
+    .slide-desc {
+        font-size: 12px;
+        line-height: 1.35;
+    }
+
+    .thumbnail-strip {
+        gap: 8px;
+        overflow-x: auto;
+        justify-content: center;
+        padding-bottom: 4px;
+    }
+
+    .thumb-label {
+        width: 50px;
+        height: 35px;
+    }
+}
+
+/* ========================================================= */
+/* PENYESUAIAN UNTUK LAYAR BESAR / DI ATAS 1440px            */
+/* ========================================================= */
+@media (min-width: 1440px) {
+    .card-box {
+        max-width: 1050px; /* Memperlebar batas maksimal card-box agar memanfaatkan ruang layar besar */
+        padding: 45px 50px 60px 50px;
+    }
+
+    .hero-section h1 {
+        font-size: 40px;
+    }
+
+    .hero-section h2 {
+        font-size: 18px;
+    }
+
+    .hero-section p, .content-section p {
+        font-size: 16px;
+    }
+
+    .content-section h2 {
+        font-size: 28px;
+    }
+    .imgCarousel {
+        background-size: cover;
+        background-position: top;
+    }
+    /* Menyesuaikan ukuran viewport carousel dan thumbnail agar lebih proporsional */
+    .carousel-viewport {
+        min-height: 330px;
+    }
+
+    .thumb-label {
+        width: 180px;
+        height: 90px;
     }
 }
 

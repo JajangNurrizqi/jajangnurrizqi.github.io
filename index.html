@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Homepage | Jajang Nurrizqi</title>
-    <link rel="stylesheet" href="/assets/style.css">
+    <link rel="stylesheet" href="assets/style.css">
     <script src="https://kit.fontawesome.com/24c6695de3.js" crossorigin="anonymous"></script>
-    <link rel="icon" type="image/png" href="/assets/img/favicon.svg">
+    <link rel="icon" type="image/png" href="assets/img/favicon.svg">
 </head>
 
 <body>
@@ -56,38 +56,95 @@
                 <div>
                     <h1>Jajang Nurrizqi</h1>
                     <h2>Backend Programmer & Information Technology Student</h2>
-                    <p>A graduate of SMKN Situraja majoring in Software Engineering currently pursuing a Bachelor's
-                        degree in Information Technology at Universitas Bina Sarana Informatika (8th Semester, currently
-                        completing the skripsi). Experienced in web development and backend system integration.</p>
+                    <p>An active undergraduate student (Bachelor’s degree) majoring in Information Technology at UBSI
+                        (currently in the final stages of completing a undergraduate thesis). Possesses experience in
+                        backend web development.</p>
                 </div>
             </div>
             <div class="scroll-hint">↓ Scroll down to view projects and other information</div>
         </div>
     </section>
 
-    <!-- Bagian Proyek -->
+    <!-- Section 2: Projects Carousel -->
     <section id="projects" class="section-card content-section">
         <div class="card-box">
             <h2>Projects</h2>
-            <div class="project-block">
-                <p>• <strong>Karang Taruna RW 05 Homepage redesign CSS:</strong> Redesigned the homepage using CSS to
-                    improve the user interface and experience.</p>
-                <p>Link to the project and pages:</p>
-                <p><a href="https://jajangnurrizqi.github.io/karang-taruna/" target="_blank">Karang Taruna 05 Page</a>
-                </p>
-                <p>• <strong>Warung Sehat:</strong> Making css layout for Workshop project for web shopping.</p>
-                <p>Link to the project and pages: (Pls be careful that the page may not be linked to one another<br />
-                    because it originally for php project with Laravel)</p>
-                <p><a href="https://jajangnurrizqi.github.io/warung-sehat/" target="_blank">Homepage</a></p>
-                <p><a href="https://jajangnurrizqi.github.io/warung-sehat/category.html" target="_blank">Category
-                        Page</a></p>
-                <p><a href="https://jajangnurrizqi.github.io/warung-sehat/detail.html" target="_blank">Detail Page</a>
-                </p>
+
+            <!-- Pure CSS Carousel Controllers -->
+            <input type="radio" name="carousel" id="p1" class="carousel-radio" checked>
+            <input type="radio" name="carousel" id="p2" class="carousel-radio">
+
+            <div class="carousel-container">
+                <!-- Main Carousel Image Viewport -->
+                <div class="carousel-viewport">
+
+                    <!-- Prev / Next Navigation Controls -->
+                    <label for="p2" class="nav-arrow next nav-p1" title="Next"><svg viewBox="0 0 24 24" fill="none"
+                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg></label>
+
+                    <label for="p1" class="nav-arrow prev nav-p2" title="Previous"><svg viewBox="0 0 24 24" fill="none"
+                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg></label>
+
+                    <!-- Large Image Slides Wrapper -->
+                    <div class="carousel-slides">
+                        <div class="carousel-slide">
+                            <span class="imgCarousel"
+                                style="background-image: url(assets/img/slide/karang-taruna-ss-1.png);"></span>
+                            <!-- <img
+                                src="assets/img/slide/karang-taruna-ss-1.png"
+                                alt="Karang Taruna 05"> -->
+                        </div>
+                        <div class="carousel-slide">
+                            <span class="imgCarousel"
+                                style="background-image: url(assets/img/slide/warung-sehat-ss-1.png);"></span>
+                            <!-- <img
+                                src="assets/img/slide/warung-sehat-ss-1.png"
+                                alt="Warung Sehat"> -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Spanning Description Bar Directly Below Image -->
+                <div class="description-window">
+                    <div class="description-slides">
+                        <div class="description-slide">
+                            <a href="https://jajangnurrizqi.github.io/karang-taruna/" target="_blank">
+                                <div class="slide-header">
+                                    <span class="slide-title">1. Karang Taruna 05</span>
+                                    <span class="slide-badge">HTML & CSS • Redesign</span>
+                                </div>
+                                <div class="slide-desc">Redesigned the homepage using CSS to improve the user interface
+                                    and experience.</div>
+                            </a>
+                        </div>
+
+                        <div class="description-slide">
+                            <a href="https://jajangnurrizqi.github.io/warung-sehat/" target="_blank">
+                                <div class="slide-header">
+                                    <span class="slide-title">2. Warung Sehat</span>
+                                    <span class="slide-badge">HTML & CSS • Layout Design</span>
+                                </div>
+                                <div class="slide-desc">Making css layout for Workshop project for web shopping.
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Horizontal Preview Thumbnails at Bottom -->
+                <div class="thumbnail-strip">
+                    <label for="p1" class="thumb-label thumb-1" title="Karang Taruna 05">
+                        <img src="assets/img/slide/karang-taruna-ss-1.png" alt="Thumb 1">
+                    </label>
+                    <label for="p2" class="thumb-label thumb-2" title="Warung Sehat">
+                        <img src="assets/img/slide/warung-sehat-ss-1.png" alt="Thumb 2">
+                    </label>
+                </div>
             </div>
-            <!-- <div class="project-block" style="margin-top: 10px;">
-                <p><strong>Other Projects:</strong> Computerized student council (OSIS) chairperson election using
-                    CodeIgniter at SMKN Situraja and the "Toko Sayur" web bootcamp project.</p>
-            </div> -->
         </div>
     </section>
 
