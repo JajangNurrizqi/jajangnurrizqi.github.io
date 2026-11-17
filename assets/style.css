@@ -16,7 +16,9 @@
     --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-* {
+*,
+*::before,
+*::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -99,6 +101,10 @@ body {
     transition: transform 0.3s ease;
 }
 
+.sidebar.dark {
+    background-color: var(--bg-dark);
+}
+
 .sidebar-top {
     border-bottom: 1px solid #e2e8f0;
     padding: 24px 20px;
@@ -111,6 +117,10 @@ body {
     font-size: 18px;
     color: var(--text-color);
     margin-bottom: 4px;
+}
+
+.sidebar-info.dark h3 {
+    color: #7fa6ff;
 }
 
 .sidebar-info p {
@@ -164,7 +174,11 @@ body {
     color: var(--primary-color);
 }
 
-/* Sidebar Checkbox Hack States */
+.sidebar-bottom.dark a {
+    color: #bad6ff !important;
+}
+
+/* Sidebar Checkbox States */
 .sidebar-toggle-input:checked ~ .toggle-btn {
     opacity: 0;
     visibility: hidden;
@@ -246,6 +260,7 @@ body {
 
 .card-box.dark {
     background-color: #000 !important;
+    border: 1px solid #3b3b3b;
     background-image: url('../assets/img/css/dark/mainbrdr.png');
 }
 
