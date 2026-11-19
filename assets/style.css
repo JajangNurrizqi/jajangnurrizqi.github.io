@@ -351,7 +351,6 @@ body {
 /* 6. CAROUSEL COMPONENT & ANIMATIONS                        */
 /* ========================================================= */
 .carousel-container {
-    --total-slides: 2;
     display: flex;
     flex-direction: column;
     gap: 12px;
@@ -370,18 +369,19 @@ body {
     box-shadow: 0 6px 18px rgba(15, 23, 42, 0.12);
     background-color: var(--bg-dark);
     border: 1px solid var(--border-color);
+    touch-action: pan-y;
 }
 
 .carousel-slides {
     display: flex;
-    width: 600%;
+    width: calc(var(--total-slides) * 100%);
     height: 100%;
     transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
-    animation: autoCarouselDynamic 8s infinite ease-in-out;
+    animation: autoCarouselDynamic 12s infinite ease-in-out;
 }
 
 .carousel-slide {
-    width: 16.6666%;
+    width: calc(100% / var(--total-slides));
     height: 100%;
     position: relative;
     flex-shrink: 0;
@@ -413,7 +413,8 @@ body {
     background: rgba(255, 255, 255, 0.9);
     color: var(--text-color);
     border-radius: 50%;
-    display: none;
+    display: flex;
+    border: 0;
     align-items: center;
     justify-content: center;
     cursor: pointer;
@@ -452,13 +453,13 @@ body {
 
 .description-slides {
     display: flex;
-    width: 600%;
+    width: calc(var(--total-slides) * 100%);
     transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
-    animation: autoCarouselDynamic 8s infinite ease-in-out;
+    animation: autoCarouselDynamic 12s infinite ease-in-out;
 }
 
 .description-slide {
-    width: 16.6666%;
+    width: calc(100% / var(--total-slides));
     padding: 20px;
     flex-shrink: 0;
     box-sizing: border-box;
@@ -509,7 +510,11 @@ body {
     gap: 12px;
     width: 100%;
     flex-shrink: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
 }
+
+.thumbnail-strip::-webkit-scrollbar { display: none; }
 
 .thumb-label {
     position: relative;
@@ -523,6 +528,14 @@ body {
     transition: opacity 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
     background-color: var(--bg-dark);
     flex-shrink: 0;
+    padding: 0;
+    display: block;
+}
+
+.thumb-label.active {
+    border-color: var(--primary-color);
+    opacity: 1;
+    box-shadow: 0 0 0 2px rgba(2, 132, 199, 0.3);
 }
 
 .thumb-label img {
@@ -537,75 +550,56 @@ body {
     transform: translateY(-2px);
 }
 
-.thumb-1 { animation: autoThumb1 8s infinite; }
-.thumb-2 { animation: autoThumb2 8s infinite; }
-
-/* Carousel Keyframes */
-@keyframes autoCarouselDynamic {
-    0%, 45% { transform: translateX(0%); }
-    50%, 95% { transform: translateX(calc(-100% / var(--total-slides))); }
-    100% { transform: translateX(0%); }
+.carousel-slides,
+.description-slides {
+    display: flex;
+    width: calc(var(--total-slides, 1) * 100%);
+    transform: translateX(calc(-100% * var(--index, 0) / var(--total-slides, 1)));
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-@keyframes autoThumb1 {
-    0%, 45% {
-        border-color: var(--primary-color);
-        opacity: 1;
-        box-shadow: 0 0 0 2px rgba(2, 132, 199, 0.3);
-    }
-    50%, 100% {
-        border-color: transparent;
-        opacity: 0.55;
-        box-shadow: none;
-    }
+.carousel-slides { height: 100%; }
+
+.carousel-slide,
+.description-slide {
+    width: calc(100% / var(--total-slides, 1));
+    flex-shrink: 0;
 }
 
-@keyframes autoThumb2 {
-    0%, 45% {
-        border-color: transparent;
-        opacity: 0.55;
-        box-shadow: none;
-    }
-    50%, 95% {
-        border-color: var(--primary-color);
-        opacity: 1;
-        box-shadow: 0 0 0 2px rgba(2, 132, 199, 0.3);
-    }
-    100% {
-        border-color: transparent;
-        opacity: 0.55;
-        box-shadow: none;
-    }
+.carousel-slide {
+    height: 100%;
+    position: relative;
 }
 
-/* Carousel Manual Overrides */
-#p1:checked ~ .carousel-container .carousel-slides,
-#p1:checked ~ .carousel-container .description-slides { 
-    animation: none;
-    transform: translateX(0%); 
+.description-slide {
+    padding: 20px;
+    box-sizing: border-box;
 }
 
-#p2:checked ~ .carousel-container .carousel-slides,
-#p2:checked ~ .carousel-container .description-slides { 
-    animation: none;
-    transform: translateX(-16.6666%); 
-}
-
-#p1:checked ~ .carousel-container .thumb-1,
-#p2:checked ~ .carousel-container .thumb-2 {
-    animation: none;
-    border-color: var(--primary-color);
-    opacity: 1;
-    box-shadow: 0 0 0 2px rgba(2, 132, 199, 0.3);
-}
-
-#p1:checked ~ .carousel-container .thumb-2,
-#p2:checked ~ .carousel-container .thumb-1 {
+/* Saat ada radio dipilih: matikan animasi semua thumbnail */
+.carousel-radio:checked ~ .carousel-container .thumb-label {
     animation: none;
     border-color: transparent;
     opacity: 0.55;
     box-shadow: none;
 }
+
+/* Thumbnail aktif (menang karena memakai ID) */
+#p1:checked ~ .carousel-container .thumb-1,
+#p2:checked ~ .carousel-container .thumb-2,
+#p3:checked ~ .carousel-container .thumb-3 {
+    border-color: var(--primary-color);
+    opacity: 1;
+    box-shadow: 0 0 0 2px rgba(2, 132, 199, 0.3);
+}
+
+#p1:checked ~ .carousel-container .nav-p1,
+#p2:checked ~ .carousel-container .nav-p2,
+#p3:checked ~ .carousel-container .nav-p3 {
+    display: flex;
+}
+
+[hidden] { display: none !important; }
 
 /* ========================================================= */
 /* 7. BADGES & UTILITIES                                     */
@@ -807,10 +801,14 @@ body.dark p {
     .thumbnail-strip {
         gap: 8px;
         overflow-x: auto;
-        justify-content: center;
+        justify-content: flex-start;
         padding-bottom: 4px;
     }
+    .thumb-label:first-child { margin-left: auto; }
+    .thumb-label:last-child  { margin-right: auto; }
 
+    .nav-arrow { width: 44px; height: 44px; }
+    
     .thumb-label {
         width: 50px;
         height: 35px;

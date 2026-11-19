@@ -75,81 +75,28 @@
             <div class="card-box">
                 <h2>Projects</h2>
 
-                <!-- Pure CSS Carousel Controllers -->
-                <input type="radio" name="carousel" id="p1" class="carousel-radio" checked>
-                <input type="radio" name="carousel" id="p2" class="carousel-radio">
-
-                <div class="carousel-container">
-                    <!-- Main Carousel Image Viewport -->
+                <div class="carousel-container" id="carousel">
                     <div class="carousel-viewport">
-
-                        <!-- Prev / Next Navigation Controls -->
-                        <label for="p2" class="nav-arrow next nav-p1" title="Next"><svg viewBox="0 0 24 24" fill="none"
-                                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="9 18 15 12 9 6"></polyline>
-                            </svg></label>
-
-                        <label for="p1" class="nav-arrow prev nav-p2" title="Previous"><svg viewBox="0 0 24 24"
-                                fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <button type="button" class="nav-arrow prev" title="Previous" aria-label="Previous">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"
+                                stroke-linejoin="round">
                                 <polyline points="15 18 9 12 15 6"></polyline>
-                            </svg></label>
-
-                        <!-- Large Image Slides Wrapper -->
-                        <div class="carousel-slides">
-                            <div class="carousel-slide">
-                                <span class="imgCarousel"
-                                    style="background-image: url(assets/img/slide/karang-taruna-ss-1.png);"></span>
-                                <!-- <img
-                                src="assets/img/slide/karang-taruna-ss-1.png"
-                                alt="Karang Taruna 05"> -->
-                            </div>
-                            <div class="carousel-slide">
-                                <span class="imgCarousel"
-                                    style="background-image: url(assets/img/slide/warung-sehat-ss-1.png);"></span>
-                                <!-- <img
-                                src="assets/img/slide/warung-sehat-ss-1.png"
-                                alt="Warung Sehat"> -->
-                            </div>
-                        </div>
+                            </svg>
+                        </button>
+                        <button type="button" class="nav-arrow next" title="Next" aria-label="Next">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </button>
+                        <div class="carousel-slides"></div>
                     </div>
 
-                    <!-- Spanning Description Bar Directly Below Image -->
                     <div class="description-window">
-                        <div class="description-slides">
-                            <div class="description-slide">
-                                <a href="https://jajangnurrizqi.github.io/karang-taruna/" target="_blank">
-                                    <div class="slide-header">
-                                        <span class="slide-title">1. Karang Taruna 05</span>
-                                        <span class="slide-badge">HTML & CSS • Redesign</span>
-                                    </div>
-                                    <div class="slide-desc">Redesigned the homepage using CSS to improve the user
-                                        interface
-                                        and experience.</div>
-                                </a>
-                            </div>
-
-                            <div class="description-slide">
-                                <a href="https://jajangnurrizqi.github.io/warung-sehat/" target="_blank">
-                                    <div class="slide-header">
-                                        <span class="slide-title">2. Warung Sehat</span>
-                                        <span class="slide-badge">HTML & CSS • Layout Design</span>
-                                    </div>
-                                    <div class="slide-desc">Making css layout for Workshop project for web shopping.
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
+                        <div class="description-slides"></div>
                     </div>
 
-                    <!-- Horizontal Preview Thumbnails at Bottom -->
-                    <div class="thumbnail-strip">
-                        <label for="p1" class="thumb-label thumb-1" title="Karang Taruna 05">
-                            <img src="assets/img/slide/karang-taruna-ss-1.png" alt="Thumb 1">
-                        </label>
-                        <label for="p2" class="thumb-label thumb-2" title="Warung Sehat">
-                            <img src="assets/img/slide/warung-sehat-ss-1.png" alt="Thumb 2">
-                        </label>
-                    </div>
+                    <div class="thumbnail-strip"></div>
                 </div>
             </div>
         </div>
@@ -266,6 +213,7 @@
         });
     </script>
 
+    <script src="assets/scripts.js"></script>
 
 </body>
 
