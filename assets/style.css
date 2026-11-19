@@ -750,14 +750,6 @@ body.dark p {
         justify-content: flex-start;
         border-radius: 10px 0 0 0;
     }
-    .card-box.dark {
-        background-color: #000 !important;
-        border: 1px solid #3b3b3b;
-        background-image: url('../assets/img/css/dark/mainbrdr.png');
-    }
-    .card-wrapper.dark::after {
-        background-image: url('../assets/img/css/dark/brdr.png');
-    }
     .sidebar.dark {
         background-color: var(--bg-dark);
     }
@@ -838,14 +830,6 @@ body.dark p {
         padding: 45px 50px 60px 50px;
     }
 
-    .card-box.dark {
-        background-color: #000 !important;
-        border: 1px solid #3b3b3b;
-        background-image: url('../assets/img/css/dark/mainbrdr.png');
-    }
-    .card-wrapper.dark::after {
-        background-image: url('../assets/img/css/dark/brdr.png');
-    }
     .sidebar.dark {
         background-color: var(--bg-dark);
     }
