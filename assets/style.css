@@ -174,6 +174,7 @@ body {
     color: var(--primary-color);
 }
 
+
 .sidebar-bottom.dark a {
     color: #bad6ff !important;
 }
@@ -744,13 +745,29 @@ body.dark p {
         top: 70px;
         width: 94%;
     }
-
     .card-box {
         padding: 24px 20px 48px 20px;
         justify-content: flex-start;
         border-radius: 10px 0 0 0;
     }
+    .card-box.dark {
+        background-color: #000 !important;
+        border: 1px solid #3b3b3b;
+        background-image: url('../assets/img/css/dark/mainbrdr.png');
+    }
+    .card-wrapper.dark::after {
+        background-image: url('../assets/img/css/dark/brdr.png');
+    }
+    .sidebar.dark {
+        background-color: var(--bg-dark);
+    }
 
+    .sidebar-info.dark h3 {
+        color: #7fa6ff;
+    }
+    .sidebar-bottom.dark a {
+        color: #bad6ff !important;
+    }
     .hero-grid {
         grid-template-columns: 1fr;
         text-align: center;
@@ -819,6 +836,25 @@ body.dark p {
 
     .card-box {
         padding: 45px 50px 60px 50px;
+    }
+
+    .card-box.dark {
+        background-color: #000 !important;
+        border: 1px solid #3b3b3b;
+        background-image: url('../assets/img/css/dark/mainbrdr.png');
+    }
+    .card-wrapper.dark::after {
+        background-image: url('../assets/img/css/dark/brdr.png');
+    }
+    .sidebar.dark {
+        background-color: var(--bg-dark);
+    }
+
+    .sidebar-info.dark h3 {
+        color: #7fa6ff;
+    }
+    .sidebar-bottom.dark a {
+        color: #bad6ff !important;
     }
 
     .hero-section h1 { font-size: 40px; }
